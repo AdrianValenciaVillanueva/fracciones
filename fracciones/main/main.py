@@ -7,8 +7,7 @@ title =ft.Text(
     color = "black",
 )
 
-
-def createContainer(image_name, on_click,color1,color2):
+def createContainer(symbol, on_click, color1, color2, page):
     outer_container = ft.Container(
         padding = 0,
         alignment = ft.alignment.bottom_center,
@@ -20,28 +19,31 @@ def createContainer(image_name, on_click,color1,color2):
 
     inner_container = ft.Container(
         padding=10,
-        alignment=ft.alignment.center,
+        alignment=ft.alignment.top_center,
         bgcolor= color2,
         width=100,
         height=88,
         border_radius=10,
-        content=ft.Image(src = f"{image_name}.png"),
+        content=ft.Text(value=symbol, color="white", size=50, text_align=ft.TextAlign.CENTER),
         ink=True,
-        on_click=on_click
+        on_click=lambda e: on_click(e, page)
     )
 
     outer_container.content = inner_container
     return outer_container
 
-# Uso de la función
-def on_click_handler(e):
-    print("clicked")
+def on_suma_click(e, page: ft.Page):
+    # Limpiamos la página
+    page.clean()
+    # Agregamos el nuevo contenido
+    page.add(ft.Text(value="Estás en la ventana de suma", color="black", size=50, text_align=ft.TextAlign.CENTER))
 
-containerSuma = createContainer("icon", on_click_handler,"#33915c","#4bb36c")
-containerResta = createContainer("icon", on_click_handler,"#f8bc25","#ffd633")
-containerDivision = createContainer("icon", on_click_handler,"#5c8ad6","#5cb2e8")
-containerMultiplicacion = createContainer("icon", on_click_handler,"#c20829","#eb2b47")
 def main(page: ft.Page):
+    containerSuma = createContainer("+", on_suma_click, "#33915c", "#4bb36c", page)
+    containerResta = createContainer("-", on_suma_click, "#f8bc25", "#ffd633", page)
+    containerDivision = createContainer("x", on_suma_click, "#5c8ad6", "#5cb2e8", page)
+    containerMultiplicacion = createContainer("÷", on_suma_click, "#c20829", "#eb2b47", page)
+
     page.adaptive = True
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
@@ -50,23 +52,19 @@ def main(page: ft.Page):
 
     page.add(
         title,
-
-    ft.Column([
-        ft.Row(controls=[
-            containerSuma,
-            containerResta,   
-        ],
-        alignment=ft.MainAxisAlignment.CENTER
-        ),
-
-        ft.Row(controls=[
-            containerDivision,
-            containerMultiplicacion,     
-        ],
-         alignment=ft.MainAxisAlignment.CENTER)
-    ]),
-    
-)
-
+        ft.Column([
+            ft.Row(controls=[
+                containerSuma,
+                containerResta,   
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+            ),
+            ft.Row(controls=[
+                containerDivision,
+                containerMultiplicacion,     
+            ],
+            alignment=ft.MainAxisAlignment.CENTER)
+        ]),
+    )
 
 ft.app(main)
