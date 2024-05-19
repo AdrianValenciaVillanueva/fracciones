@@ -38,11 +38,36 @@ def on_suma_click(e, page: ft.Page):
     # Agregamos el nuevo contenido
     page.add(ft.Text(value="Estás en la ventana de suma", color="black", size=50, text_align=ft.TextAlign.CENTER))
 
+def on_resta_click(e, page: ft.Page):
+    # Limpiamos la página
+    page.clean()
+    # Agregamos el nuevo contenido
+    page.add(ft.Text(value="Estás en la ventana de resta", color="black", size=50, text_align=ft.TextAlign.CENTER))
+
+def on_multi_click(e, page: ft.Page):
+    # Limpiamos la página
+    page.clean()
+    # Agregamos el nuevo contenido
+    page.add(ft.Text(value="Estás en la ventana de multiplicacion", color="black", size=50, text_align=ft.TextAlign.CENTER))
+
+def on_divi_click(e, page: ft.Page):
+    # Limpiamos la página
+    page.clean()
+    # Agregamos el nuevo contenido
+    page.add(ft.Text(value="Estás en la ventana de divi", color="black", size=50, text_align=ft.TextAlign.CENTER))
+
+def on_informacion_click(e, page: ft.Page):
+    # Limpiamos la página
+    page.clean()
+    image_path = "C:\\Users\\Dario\\Desktop\\partes.png"
+    page.add(ft.Image(image_path, width=600, height=600))
+
 def main(page: ft.Page):
     containerSuma = createContainer("+", on_suma_click, "#33915c", "#4bb36c", page)
-    containerResta = createContainer("-", on_suma_click, "#f8bc25", "#ffd633", page)
-    containerDivision = createContainer("x", on_suma_click, "#5c8ad6", "#5cb2e8", page)
-    containerMultiplicacion = createContainer("÷", on_suma_click, "#c20829", "#eb2b47", page)
+    containerResta = createContainer("-", on_resta_click, "#f8bc25", "#ffd633", page)
+    containerDivision = createContainer("x", on_multi_click, "#5c8ad6", "#5cb2e8", page)
+    containerMultiplicacion = createContainer("÷", on_divi_click, "#c20829", "#eb2b47", page)
+    containerInformacion = createContainer("?", on_informacion_click, "#a245f7", "#a552f2", page)
 
     page.adaptive = True
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -63,7 +88,12 @@ def main(page: ft.Page):
                 containerDivision,
                 containerMultiplicacion,     
             ],
+            alignment=ft.MainAxisAlignment.CENTER),
+            ft.Row(controls=[
+                containerInformacion,
+            ],
             alignment=ft.MainAxisAlignment.CENTER)
+
         ]),
     )
 
