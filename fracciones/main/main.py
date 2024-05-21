@@ -1,5 +1,5 @@
 import flet as ft
-#titulo de la pagina principalllll
+#titulo de la pagina principal
 title =ft.Text(
     text_align=ft.TextAlign.CENTER,
     value=f"Fracciones",
