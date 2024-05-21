@@ -117,15 +117,89 @@ def main(page: ft.Page):
         )
         botonRegresar = ft.Stack([
             exterior,interior
-        ])
+        ],
+        alignment = ft.alignment.center,
+        )
+        #niveles
+        carter1 = ft.Container(
+            width=100,
+            height=100,
+            bgcolor="white", 
+            border_radius=10,
+           
+        ) 
+        cartel2 = ft.Container(
+            width=90,
+            height=90,
+            bgcolor="#91d9ff",
+            border_radius=10,
+            left=5,
+            top=5,
+            content = ft.Column(controls=[
+                ft.Text(value="1", color="white", size=30,text_align=ft.TextAlign.CENTER,width=90),
+                ft.Text(value="Level", color="black", size=30,text_align=ft.TextAlign.CENTER,width=90),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+            spacing=0,
+            )
+        )
+
+        base = ft.Container(
+            width=20,
+            height=20,
+            bgcolor="brown",
+        )
+        nivel1 = ft.Container(
+            width=100,
+            height=130,
+            content=ft.Column(controls=[
+                ft.Stack([carter1,cartel2]),
+                ft.Row(controls=[
+                    base,
+                ],
+                width=100,
+                alignment=ft.MainAxisAlignment.CENTER,
+                )
+            ],
+            spacing=0,
+            ),
+            on_click=lambda _: page.go("/nivel1Suma"),
+        )
+        
+        nivel2 = ft.Container(
+            width=100,
+            height=130,
+            bgcolor="blue",
+            on_click=lambda _: page.go("/nivel2Suma"),
+        )
+
+        nivel3 = ft.Container(
+            width=100,
+            height=130,
+            bgcolor="green",
+            on_click=lambda _: page.go("/nivel3Suma"),
+        )
         if page.route == "/suma":
             page.views.append(
                 ft.View(
                     "/suma",
                    controls= [
+                       ft.Row(controls=[title],
+                              alignment=ft.MainAxisAlignment.CENTER,
+                           ),
                         botonRegresar,
+                        ft.Row(controls=[
+                            nivel1,
+                            nivel2,
+                            nivel3,
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=50,
+                        )
                     ],
                     bgcolor="#5271ff",
+                    padding=50,
+                    
                 )
             )
 
