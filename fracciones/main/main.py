@@ -5,7 +5,6 @@ title =ft.Text(
     value=f"Fracciones",
     size=60,
     color = "black",
-    
 )
 
 #funcion para crear los contenedores de los botones
@@ -36,7 +35,7 @@ def createContainer(symbol,route, color1, color2, page):
 
 def main(page: ft.Page):
     
-    page.title = "Routes Example"
+    page.title = "fracciones"
     containerSuma = createContainer("+","suma", "#33915c", "#4bb36c", page)
     containerResta = createContainer("-", "resta", "#f8bc25", "#ffd633", page)
     containerDivision = createContainer("x", "multiplicacion", "#5c8ad6", "#5cb2e8", page)
@@ -223,6 +222,8 @@ def main(page: ft.Page):
         )
         #agregar los elementos a la pagina  
         if page.route == "/suma":
+            #cambiar imagen
+            image.src = "assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/suma",
@@ -238,7 +239,13 @@ def main(page: ft.Page):
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=50,
-                        )
+                        ),
+                        ft.Row(controls=[
+                            image,
+                        ],
+                        spacing=0,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        ),
                     ],
                     bgcolor="#5271ff",
                     padding=50,
@@ -253,54 +260,14 @@ def main(page: ft.Page):
         ],)
         if page.route == "/resta":
             #cambiar solo el contenido de los niveles para cambiar a donde redireccionar
-            nivel1 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel1]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0,
-                ),
-                on_click=lambda _: page.go("/nivel1Resta"),
-            )
-            nivel2 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel2]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel2Resta"),
-            )
-            nivel3 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel3]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel3Resta"),
-            )
+            nivel1.on_click = lambda _: page.go("/suma")
+            nivel2.on_click = lambda _: page.go("/suma")
+            nivel3.on_click = lambda _: page.go("/suma")
+            exterior.bgcolor = "#f8bc25"
+            interior.bgcolor = "#ffd633"
+            interior.content.value = "-"
+            #cambiar la imagen
+            image.src = "assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/resta",
@@ -308,7 +275,7 @@ def main(page: ft.Page):
                         ft.Row(controls=[title],
                               alignment=ft.MainAxisAlignment.CENTER,
                            ),
-                        botonRegresarResta,
+                        botonRegresar,
                         ft.Row(controls=[
                             nivel1,
                             nivel2,
@@ -316,7 +283,13 @@ def main(page: ft.Page):
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=50,
-                        )
+                        ),
+                        ft.Row(controls=[
+                            image,
+                        ],
+                        spacing=0,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        ),
                     ],
                     bgcolor="#5271ff",
                     padding=50,
@@ -326,59 +299,16 @@ def main(page: ft.Page):
 
         #elementos de la pagina multiplicacion
         #boton regresar
-        botonRegresarMultiplicacion = ft.Stack([
-            createExterior("#5c8ad6"),createInterior("#5cb2e8","x")
-        ],)
         if page.route == "/multiplicacion":
             #cambiar solo el contenido de los niveles para cambiar a donde redireccionar
-            nivel1 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel1]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0,
-                ),
-                on_click=lambda _: page.go("/nivel1Multiplicacion"),
-            )
-            nivel2 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel2]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel2Multiplicacion"),
-            )
-            nivel3 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel3]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel3Multiplicacion"),
-            )
+            nivel1.on_click = lambda _: page.go("/suma")
+            nivel2.on_click = lambda _: page.go("/suma")
+            nivel3.on_click = lambda _: page.go("/suma")
+            exterior.bgcolor = "#5c8ad6"
+            interior.bgcolor = "#5cb2e8"
+            interior.content.value = "x"
+            #cambiar la imagen
+            image.src = "assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/multiplicacion",
@@ -386,7 +316,7 @@ def main(page: ft.Page):
                         ft.Row(controls=[title],
                               alignment=ft.MainAxisAlignment.CENTER,
                            ),
-                        botonRegresarMultiplicacion,
+                        botonRegresar,
                         ft.Row(controls=[
                             nivel1,
                             nivel2,
@@ -394,7 +324,13 @@ def main(page: ft.Page):
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=50,
-                        )
+                        ),
+                        ft.Row(controls=[
+                            image,
+                        ],
+                        spacing=0,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        ),
                     ],
                     bgcolor="#5271ff",
                     padding=50,
@@ -403,60 +339,18 @@ def main(page: ft.Page):
 
 
         #elementos de la pagina division
-        #boton regresar
-        botonRegresarDivision = ft.Stack([
-            createExterior("#c20829"),createInterior("#eb2b47","÷")
-        ],)
+        
         if page.route == "/division":
             #modificar los niveles solo para la redireccion
-            nivel1 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel1]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0,
-                ),
-                on_click=lambda _: page.go("/nivel1Division"),
-            )
-            nivel2 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel2]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel2Division"),
-            )
-            nivel3 = ft.Container(
-                width=100,
-                height=130,
-                content=ft.Column(controls=[
-                    ft.Stack([cartelBack,cartel3]),
-                    ft.Row(controls=[
-                        base,
-                    ],
-                    width=100,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    )
-                ],
-                spacing=0
-                ),
-                on_click=lambda _: page.go("/nivel3Division"),
-            )
+            nivel1.on_click = lambda _: page.go("/suma")
+            nivel2.on_click = lambda _: page.go("/suma")
+            nivel3.on_click = lambda _: page.go("/suma")
+            #modificar los elementos del boton regresar
+            exterior.bgcolor = "#c20829"
+            interior.bgcolor = "#eb2b47"
+            interior.content.value = "÷"
+            #cabiar la imagen 
+            image.src = "assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/division",
@@ -464,7 +358,7 @@ def main(page: ft.Page):
                         ft.Row(controls=[title],
                               alignment=ft.MainAxisAlignment.CENTER,
                            ),
-                        botonRegresarDivision,
+                        botonRegresar,
                         ft.Row(controls=[
                             nivel1,
                             nivel2,
@@ -472,7 +366,13 @@ def main(page: ft.Page):
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         spacing=50,
-                        )
+                        ),
+                        ft.Row(controls=[
+                            image,
+                        ],
+                        spacing=0,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        ),
                     ],
                     bgcolor="#5271ff",
                     padding=50,
