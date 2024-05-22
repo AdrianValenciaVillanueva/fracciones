@@ -120,40 +120,53 @@ def main(page: ft.Page):
         ],
         alignment = ft.alignment.center,
         )
+
         #niveles
-        carter1 = ft.Container(
+        #fondo blanco de los carteles (se usa para todos los carteles)
+        cartelBack = ft.Container(
             width=100,
             height=100,
             bgcolor="white", 
             border_radius=10,
            
         ) 
-        cartel2 = ft.Container(
-            width=90,
-            height=90,
-            bgcolor="#91d9ff",
-            border_radius=10,
-            left=5,
-            top=5,
-            content = ft.Column(controls=[
-                ft.Text(value="1", color="white", size=30,text_align=ft.TextAlign.CENTER,width=90),
-                ft.Text(value="Level", color="black", size=30,text_align=ft.TextAlign.CENTER,width=90),
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-            spacing=0,
-            )
-        )
-
+        #base de los carteles (se usa para todos los carteles)
         base = ft.Container(
             width=20,
             height=20,
             bgcolor="brown",
         )
+        #funcion para crear el contenedor de los carteles con texto(facilita crear el contenido de los carteles pasar nivel en numero)
+        def createCartel(nivel,texto):
+            cartel = ft.Container(
+                width=90,
+                height=90,
+                bgcolor="#91d9ff",
+                border_radius=10,
+                left=5,
+                top=5,
+                content = ft.Column(
+                    controls=[
+                    ft.Text(value=nivel, color="white", size=30,text_align=ft.TextAlign.CENTER,width=90),
+                    ft.Text(value=texto, color="black", size=30,text_align=ft.TextAlign.CENTER,width=90),
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=0,
+                )
+            )
+            return cartel
+        
+        #crear los carteles
+        cartel1 = createCartel("1","Level")
+        cartel2 = createCartel("2","Level")
+        cartel3 = createCartel("3","Level")
+
+        #contenedores de los niveles
         nivel1 = ft.Container(
             width=100,
             height=130,
             content=ft.Column(controls=[
-                ft.Stack([carter1,cartel2]),
+                ft.Stack([cartelBack,cartel1]),
                 ft.Row(controls=[
                     base,
                 ],
@@ -169,16 +182,37 @@ def main(page: ft.Page):
         nivel2 = ft.Container(
             width=100,
             height=130,
-            bgcolor="blue",
+            content=ft.Column(controls=[
+                ft.Stack([cartelBack,cartel2]),
+                ft.Row(controls=[
+                    base,
+                ],
+                width=100,
+                alignment=ft.MainAxisAlignment.CENTER,
+                )
+            ],
+            spacing=0
+            ),
             on_click=lambda _: page.go("/nivel2Suma"),
         )
 
         nivel3 = ft.Container(
             width=100,
             height=130,
-            bgcolor="green",
+            content=ft.Column(controls=[
+                ft.Stack([cartelBack,cartel3]),
+                ft.Row(controls=[
+                    base,
+                ],
+                width=100,
+                alignment=ft.MainAxisAlignment.CENTER,
+                )
+            ],
+            spacing=0
+            ),
             on_click=lambda _: page.go("/nivel3Suma"),
         )
+        #agregar los elementos a la pagina  
         if page.route == "/suma":
             page.views.append(
                 ft.View(
