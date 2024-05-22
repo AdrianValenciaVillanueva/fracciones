@@ -95,28 +95,34 @@ def main(page: ft.Page):
         )
 
         #elementos de la pagina suma
+        #funcion crear elemento exterior ejemplo: color #4bb36c se puede usar en los demas niveles
+        def createExterior(color):
+            return ft.Container(
+            padding = 0,
+            alignment = ft.alignment.bottom_center,
+            bgcolor = color,
+            width=100,
+            height=100,
+            border_radius=10,
+            )
+        #funcion crear elemento interior ejemplo: simbolo "+" se puede usar en los demas niveles el redirect es opcional por defecto envia a la pagina principal
+        def createInterior(color,simbolo,redirect = ""):
+            return ft.Container(
+            padding = 0,
+            alignment = ft.alignment.center,
+            bgcolor = color,
+            width=100,
+            height=88,
+            border_radius=10,
+            content=ft.Text(value=simbolo, color="white", size=50,text_align=ft.TextAlign.START,),
+            ink=True,
+            on_click=lambda _: page.go("/"+redirect),
+            top = 12,
+            )
         #elemento de boton regresar
-        exterior = ft.Container(
-        padding = 0,
-        alignment = ft.alignment.bottom_center,
-        bgcolor = "#33915c",
-        width=100,
-        height=100,
-        border_radius=10,
-        )
+        exterior = createExterior("#33915c")
         #elemento interior boton regresar
-        interior = ft.Container(
-        padding = 0,
-        alignment = ft.alignment.center,
-        bgcolor = "#4bb36c",
-        width=100,
-        height=88,
-        border_radius=10,
-        content=ft.Text(value="+", color="white", size=50,text_align=ft.TextAlign.START,),
-        ink=True,
-        on_click=lambda _: page.go("/"),
-        top = 12,
-        )
+        interior = createInterior("#4bb36c","+")
         #boton regresar completo
         botonRegresar = ft.Stack([
             exterior,interior
@@ -241,40 +247,235 @@ def main(page: ft.Page):
             )
 
         #elementos de la pagina resta
+        #boton regresar
+        botonRegresarResta = ft.Stack([
+            createExterior("#f8bc25"),createInterior("#ffd633","-")
+        ],)
         if page.route == "/resta":
+            #cambiar solo el contenido de los niveles para cambiar a donde redireccionar
+            nivel1 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel1]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0,
+                ),
+                on_click=lambda _: page.go("/nivel1Resta"),
+            )
+            nivel2 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel2]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel2Resta"),
+            )
+            nivel3 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel3]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel3Resta"),
+            )
             page.views.append(
                 ft.View(
                     "/resta",
                     [
-                        ft.AppBar(title=ft.Text("Store"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
+                        ft.Row(controls=[title],
+                              alignment=ft.MainAxisAlignment.CENTER,
+                           ),
+                        botonRegresarResta,
+                        ft.Row(controls=[
+                            nivel1,
+                            nivel2,
+                            nivel3,
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=50,
+                        )
                     ],
+                    bgcolor="#5271ff",
+                    padding=50,
                 )
             )
 
 
         #elementos de la pagina multiplicacion
+        #boton regresar
+        botonRegresarMultiplicacion = ft.Stack([
+            createExterior("#5c8ad6"),createInterior("#5cb2e8","x")
+        ],)
         if page.route == "/multiplicacion":
+            #cambiar solo el contenido de los niveles para cambiar a donde redireccionar
+            nivel1 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel1]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0,
+                ),
+                on_click=lambda _: page.go("/nivel1Multiplicacion"),
+            )
+            nivel2 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel2]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel2Multiplicacion"),
+            )
+            nivel3 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel3]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel3Multiplicacion"),
+            )
             page.views.append(
                 ft.View(
                     "/multiplicacion",
                     [
-                        ft.AppBar(title=ft.Text("Store"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
+                        ft.Row(controls=[title],
+                              alignment=ft.MainAxisAlignment.CENTER,
+                           ),
+                        botonRegresarMultiplicacion,
+                        ft.Row(controls=[
+                            nivel1,
+                            nivel2,
+                            nivel3,
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=50,
+                        )
                     ],
+                    bgcolor="#5271ff",
+                    padding=50,
                 )
             )
 
 
         #elementos de la pagina division
+        #boton regresar
+        botonRegresarDivision = ft.Stack([
+            createExterior("#c20829"),createInterior("#eb2b47","÷")
+        ],)
         if page.route == "/division":
+            #modificar los niveles solo para la redireccion
+            nivel1 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel1]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0,
+                ),
+                on_click=lambda _: page.go("/nivel1Division"),
+            )
+            nivel2 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel2]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel2Division"),
+            )
+            nivel3 = ft.Container(
+                width=100,
+                height=130,
+                content=ft.Column(controls=[
+                    ft.Stack([cartelBack,cartel3]),
+                    ft.Row(controls=[
+                        base,
+                    ],
+                    width=100,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    )
+                ],
+                spacing=0
+                ),
+                on_click=lambda _: page.go("/nivel3Division"),
+            )
             page.views.append(
                 ft.View(
                     "/division",
                     [
-                        ft.AppBar(title=ft.Text("Store"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
+                        ft.Row(controls=[title],
+                              alignment=ft.MainAxisAlignment.CENTER,
+                           ),
+                        botonRegresarDivision,
+                        ft.Row(controls=[
+                            nivel1,
+                            nivel2,
+                            nivel3,
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        spacing=50,
+                        )
                     ],
+                    bgcolor="#5271ff",
+                    padding=50,
                 )
             )
 
