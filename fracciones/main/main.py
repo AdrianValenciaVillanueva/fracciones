@@ -58,26 +58,33 @@ def main(page: ft.Page):
             ft.View(
                 "/",
                 controls=[
+                    #titulo de la pagina
                     ft.Row(controls=[title],
                            alignment=ft.MainAxisAlignment.CENTER,
                            ),
+                    #espacio de botones
                     ft.Column(controls=[
+                        #primeros 2 botones
                         ft.Row(controls=[
                             containerSuma,
                             containerResta,   
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         ),
+                        #segundos 2 botones
                         ft.Row(controls=[
                             containerDivision,
                             containerMultiplicacion,     
                         ],
-                        alignment=ft.MainAxisAlignment.CENTER),
+                        alignment=ft.MainAxisAlignment.CENTER
+                        ),
+                        #boton de informacion
                         ft.Row(controls=[
                             containerInformacion,
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         ),
+                        #imagen de ajolote
                         ft.Row(controls=[
                             image,
                         ],
@@ -87,8 +94,10 @@ def main(page: ft.Page):
 
                     ],),
                 ],
+                #espacio entre los elementos
                 padding=50,
-                bgcolor="#5271ff",
+                #color de fondo
+                bgcolor="#a6c3dc",
                 
             )
         )
@@ -136,13 +145,14 @@ def main(page: ft.Page):
             height=100,
             bgcolor="white", 
             border_radius=10,
-           
+            border=ft.border.all(),
         ) 
         #base de los carteles (se usa para todos los carteles)
         base = ft.Container(
             width=20,
             height=20,
             bgcolor="brown",
+            border = ft.border.all(),
         )
         #funcion para crear el contenedor de los carteles con texto(facilita crear el contenido de los carteles pasar nivel en numero)
         def createCartel(nivel,texto):
@@ -151,6 +161,7 @@ def main(page: ft.Page):
                 height=90,
                 bgcolor="#91d9ff",
                 border_radius=10,
+                border=ft.border.all(),
                 left=5,
                 top=5,
                 content = ft.Column(
