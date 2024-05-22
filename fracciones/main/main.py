@@ -95,6 +95,7 @@ def main(page: ft.Page):
         )
 
         #elementos de la pagina suma
+        #elemento de boton regresar
         exterior = ft.Container(
         padding = 0,
         alignment = ft.alignment.bottom_center,
@@ -103,6 +104,7 @@ def main(page: ft.Page):
         height=100,
         border_radius=10,
         )
+        #elemento interior boton regresar
         interior = ft.Container(
         padding = 0,
         alignment = ft.alignment.center,
@@ -115,6 +117,7 @@ def main(page: ft.Page):
         on_click=lambda _: page.go("/"),
         top = 12,
         )
+        #boton regresar completo
         botonRegresar = ft.Stack([
             exterior,interior
         ],
