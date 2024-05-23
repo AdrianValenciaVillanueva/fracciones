@@ -50,7 +50,7 @@ def main(page: ft.Page):
 
         #elementos de la pagina principal
         image = ft.Image(
-            src="assets/ajoloteFeliz.png",
+            src="../assets/ajoloteFeliz.png",
             width=500,
             height=500,
         )
@@ -89,6 +89,7 @@ def main(page: ft.Page):
                             image,
                         ],
                         alignment=ft.MainAxisAlignment.END,
+                        spacing=0,
                         ),
                         
 
@@ -234,7 +235,7 @@ def main(page: ft.Page):
         #agregar los elementos a la pagina  
         if page.route == "/suma":
             #cambiar imagen
-            image.src = "assets/ajoloteFeliz.png"
+            image.src = "../assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/suma",
@@ -278,7 +279,7 @@ def main(page: ft.Page):
             interior.bgcolor = "#ffd633"
             interior.content.value = "-"
             #cambiar la imagen
-            image.src = "assets/ajoloteFeliz.png"
+            image.src = "../assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/resta",
@@ -319,7 +320,7 @@ def main(page: ft.Page):
             interior.bgcolor = "#5cb2e8"
             interior.content.value = "x"
             #cambiar la imagen
-            image.src = "assets/ajoloteFeliz.png"
+            image.src = "../assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/multiplicacion",
@@ -361,7 +362,7 @@ def main(page: ft.Page):
             interior.bgcolor = "#eb2b47"
             interior.content.value = "÷"
             #cabiar la imagen 
-            image.src = "assets/ajoloteFeliz.png"
+            image.src = "../assets/ajoloteFeliz.png"
             page.views.append(
                 ft.View(
                     "/division",
