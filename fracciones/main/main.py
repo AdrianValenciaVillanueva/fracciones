@@ -269,6 +269,7 @@ def main(page: ft.Page):
         if page.route == "/nivel1Suma":
             #cambiar imagen
             image.src = "../assets/partes.png"
+            interior.on_click = lambda _: page.go("/suma")
             page.views.clear()
             page.views.append(
             ft.View(
