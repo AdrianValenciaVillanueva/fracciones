@@ -186,18 +186,19 @@ def main(page: ft.Page):
             width=100,
             height=130,
             content=ft.Column(controls=[
-                ft.Stack([cartelBack,cartel1]),
-                ft.Row(controls=[
-                    base,
-                ],
+            ft.Stack([cartelBack, cartel1]),
+            ft.Row(controls=[
+                base,
+            ],
                 width=100,
                 alignment=ft.MainAxisAlignment.CENTER,
-                )
+            )
             ],
             spacing=0,
             ),
             on_click=lambda _: page.go("/nivel1Suma"),
         )
+        
         
         nivel2 = ft.Container(
             width=100,
@@ -237,32 +238,56 @@ def main(page: ft.Page):
             #cambiar imagen
             image.src = "../assets/ajoloteFeliz.png"
             page.views.append(
-                ft.View(
-                    "/suma",
-                   controls= [
-                       ft.Row(controls=[title],
-                              alignment=ft.MainAxisAlignment.CENTER,
-                           ),
-                        botonRegresar,
-                        ft.Row(controls=[
-                            nivel1,
-                            nivel2,
-                            nivel3,
-                        ],
-                        alignment=ft.MainAxisAlignment.CENTER,
-                        spacing=50,
-                        ),
-                        ft.Row(controls=[
-                            image,
-                        ],
-                        spacing=0,
-                        alignment=ft.MainAxisAlignment.CENTER,
-                        ),
-                    ],
-                    bgcolor="#5271ff",
-                    padding=50,
-                    
-                )
+            ft.View(
+                "/suma",
+               controls= [
+                   ft.Row(controls=[title],
+                      alignment=ft.MainAxisAlignment.CENTER,
+                   ),
+                botonRegresar,
+                ft.Row(controls=[
+                    nivel1,
+                    nivel2,
+                    nivel3,
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                spacing=50,
+                ),
+                ft.Row(controls=[
+                    image,
+                ],
+                spacing=0,
+                alignment=ft.MainAxisAlignment.CENTER,
+                ),
+                ],
+                bgcolor="#5271ff",
+                padding=50,
+                
+            )
+            )
+        
+        if page.route == "/nivel1Suma":
+            #cambiar imagen
+            image.src = "../assets/partes.png"
+            page.views.clear()
+            page.views.append(
+            ft.View(
+                "/nivel1Suma",
+                controls=[
+                ft.Row(
+                    controls=[title],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                ),
+                botonRegresar,
+                ft.Row(
+                    controls=[image],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=0,
+                ),
+                ],
+                bgcolor="#5271ff",
+                padding=50,
+            )
             )
 
         #elementos de la pagina resta
@@ -307,6 +332,29 @@ def main(page: ft.Page):
                     padding=50,
                 )
             )
+        if page.route == "/nivel1Resta":
+            #cambiar imagen
+            image.src = "../assets/partes.png"
+            page.views.clear()
+            page.views.append(
+            ft.View(
+                "/nivel1Suma",
+                controls=[
+                ft.Row(
+                    controls=[title],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                ),
+                botonRegresar,
+                ft.Row(
+                    controls=[image],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=0,
+                ),
+                ],
+                bgcolor="#5271ff",
+                padding=50,
+            )
+            )
 
 
         #elementos de la pagina multiplicacion
@@ -348,7 +396,29 @@ def main(page: ft.Page):
                     padding=50,
                 )
             )
-
+        if page.route == "/nivel1Multiplicacion":
+            #cambiar imagen
+            image.src = "../assets/partes.png"
+            page.views.clear()
+            page.views.append(
+            ft.View(
+                "/nivel1Suma",
+                controls=[
+                ft.Row(
+                    controls=[title],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                ),
+                botonRegresar,
+                ft.Row(
+                    controls=[image],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=0,
+                ),
+                ],
+                bgcolor="#5271ff",
+                padding=50,
+            )
+            )
 
         #elementos de la pagina division
         
@@ -389,6 +459,29 @@ def main(page: ft.Page):
                     bgcolor="#5271ff",
                     padding=50,
                 )
+            )
+        if page.route == "/nivel1Division":
+            #cambiar imagen
+            image.src = "../assets/partes.png"
+            page.views.clear()
+            page.views.append(
+            ft.View(
+                "/nivel1Suma",
+                controls=[
+                ft.Row(
+                    controls=[title],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                ),
+                botonRegresar,
+                ft.Row(
+                    controls=[image],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=0,
+                ),
+                ],
+                bgcolor="#5271ff",
+                padding=50,
+            )
             )
 
 
