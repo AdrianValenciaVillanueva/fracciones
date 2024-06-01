@@ -268,7 +268,8 @@ def main(page: ft.Page):
         
         if page.route == "/nivel1Suma":
             #cambiar imagen
-            image.src = "../assets/partes.png"
+            image.src = "../assets/ajoloteTriste.png"
+            #redireccionar a la pagina siguiente
             interior.on_click = lambda _: page.go("/suma")
             page.views.clear()
             page.views.append(
@@ -280,6 +281,10 @@ def main(page: ft.Page):
                     alignment=ft.MainAxisAlignment.CENTER,
                 ),
                 botonRegresar,
+                ft.Row(
+                    controls=[image],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                ),
                 ft.Row(
                     controls=[image],
                     alignment=ft.MainAxisAlignment.CENTER,
